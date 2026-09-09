@@ -29,15 +29,22 @@
   }
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
 
+  @media (min-width:1400px){
+    .wrap{max-width:1400px;padding:0 48px;}
+  }
+  @media (min-width:1800px){
+    .wrap{max-width:1680px;padding:0 64px;}
+  }
+
   header{padding:64px 0 8px;text-align:center;}
   .eyebrow{font-size:15px;color:var(--ink-soft);margin:0 0 14px;}
   h1{
     font-family:'Frank Ruhl Libre',serif;
     font-weight:700;
-    font-size:clamp(34px,6vw,54px);
+    font-size:clamp(34px,4vw,64px);
     margin:0 0 18px;
   }
-  .greeting{max-width:560px;margin:0 auto 8px;font-size:17px;color:var(--ink-soft);}
+  .greeting{max-width:640px;margin:0 auto 8px;font-size:clamp(17px,1.1vw,20px);color:var(--ink-soft);}
 
   .season-key{
     display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;
@@ -77,6 +84,13 @@
     transform:translateY(16px);
     transition:opacity 0.5s ease, transform 0.5s ease;
   }
+  @media (min-width:1400px){
+    .stop{min-height:56vh;}
+  }
+  .stop.winter{background-color:var(--winter-soft);}
+  .stop.spring{background-color:var(--spring-soft);}
+  .stop.summer{background-color:var(--summer-soft);}
+  .stop.autumn{background-color:var(--autumn-soft);}
   .stop::before{
     content:'';
     position:absolute;
@@ -109,12 +123,36 @@
   .stop h2{
     font-family:'Frank Ruhl Libre',serif;
     font-weight:400;
-    font-size:30px;
+    font-size:clamp(30px,2.4vw,40px);
     color:#fff;
     margin:0 0 12px;
   }
   .stop h2 .dest{font-weight:700;}
-  .stop p{font-size:16px;color:rgba(255,255,255,0.88);max-width:460px;margin:0;}
+  .stop p{font-size:clamp(16px,1.1vw,19px);color:rgba(255,255,255,0.88);max-width:520px;margin:0;}
+  .stop .cta-hint{
+    display:inline-block;
+    margin-top:14px;
+    font-size:14px;
+    font-weight:500;
+    color:#fff;
+  }
+
+  .season-divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:15px;
+    font-weight:500;
+    color:var(--ink-soft);
+    padding:8px 4px 4px;
+    margin-top:4px;
+  }
+  .season-divider:first-child{margin-top:0;}
+  .season-divider-dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .season-divider.winter .season-divider-dot{background:var(--winter);}
+  .season-divider.spring .season-divider-dot{background:var(--spring);}
+  .season-divider.summer .season-divider-dot{background:var(--summer);}
+  .season-divider.autumn .season-divider-dot{background:var(--autumn);}
 
   footer{
     text-align:center;
@@ -172,147 +210,173 @@
 
     <div class="story-col">
 
-      <section class="stop winter" data-target="350" data-months="10,11,0,1,2" style="background-image:url('https://cdn.pixabay.com/photo/2014/12/09/21/28/giraffe-562391_1280.jpg')">
+      <div class="season-divider winter"><span class="season-divider-dot"></span>חורף</div>
+
+      <section class="stop winter" data-bg="https://cdn.pixabay.com/photo/2014/12/09/21/28/giraffe-562391_1280.jpg" data-target="350" data-months="10,11,0,1,2">
         <a class="content" href="https://botz-adventures.co.il/myt-country/ke/" target="_blank" rel="noopener">
           <span class="season-tag">נוב–מרץ</span>
           <h2><span class="dest">קניה</span> - רכיבה וספארי</h2>
           <p>עונה יבשה, הזמן הקלאסי לספארי. רכיבה בשמורות, לודג' יוקרה ומדריך ישראלי לאורך כל הדרך.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop winter" data-target="15" data-months="11,0,1,2" style="background-image:url('https://pixabay.com/get/gbed1ad03b2bcacbbb6e491700b0d97737f09f05ca4624901e8f742142413cd5b0ba5cb7fe808eeeac8fbb23954a78880_1920.jpg?longlived=')">
+      <section class="stop winter" data-bg="https://pixabay.com/get/gbed1ad03b2bcacbbb6e491700b0d97737f09f05ca4624901e8f742142413cd5b0ba5cb7fe808eeeac8fbb23954a78880_1920.jpg?longlived=" data-target="15" data-months="11,0,1,2">
         <a class="content" href="https://botz-adventures.co.il/myt-country/lk/" target="_blank" rel="noopener">
           <span class="season-tag">דצמ–מרץ</span>
           <h2><span class="dest">סרי לנקה</span> - רכיבה</h2>
           <p>עונה יבשה בדרום ובמערב האי. רכיבה בין מטעי תה, שדות אורז וכפרים מסורתיים.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop winter" data-target="45" data-months="0,1,2,3" style="background-image:url('https://cdn.pixabay.com/photo/2023/02/24/02/39/rice-terraces-7810000_1280.jpg')">
+      <section class="stop winter" data-bg="https://cdn.pixabay.com/photo/2023/02/24/02/39/rice-terraces-7810000_1280.jpg" data-target="45" data-months="0,1,2,3">
         <a class="content" href="https://botz-adventures.co.il/myt-country/VN/" target="_blank" rel="noopener">
           <span class="season-tag">ינו–אפר</span>
           <h2><span class="dest">וייטנאם</span> - רכיבה</h2>
           <p>עונה יבשה, לפני עונת המונסון. רכיבה בין שדות אורז, כפרים ומפרץ האלונג.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop spring" data-target="105" data-months="2,3,4" style="background-image:url('https://cdn.pixabay.com/photo/2019/03/02/21/25/morocco-4030733_1280.jpg')">
+      <div class="season-divider spring"><span class="season-divider-dot"></span>אביב</div>
+
+      <section class="stop spring" data-bg="https://cdn.pixabay.com/photo/2019/03/02/21/25/morocco-4030733_1280.jpg" data-target="105" data-months="2,3,4">
         <a class="content" href="https://botz-adventures.co.il/myt-country/ma/" target="_blank" rel="noopener">
           <span class="season-tag">מרץ–מאי</span>
           <h2><span class="dest">מרוקו</span> - רכיבה והליכה</h2>
           <p>לפני שהחום המדברי מגיע — הזמן הכי נעים לצאת לשטח בין הרי האטלס לכפרים ברבריים.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop spring" data-target="120" data-months="3,4" style="background-image:url('https://pixabay.com/get/gb90fafa4733c4704f5bf310108e549b5675c306453e24aa1242ea66fe25297ec048c5716ef353d2cca2e21b10f23f482_1920.jpg?longlived=')">
+      <section class="stop spring" data-bg="https://pixabay.com/get/gb90fafa4733c4704f5bf310108e549b5675c306453e24aa1242ea66fe25297ec048c5716ef353d2cca2e21b10f23f482_1920.jpg?longlived=" data-target="120" data-months="3,4">
         <a class="content" href="https://botz-adventures.co.il/myt-country/jp/" target="_blank" rel="noopener">
           <span class="season-tag">אפר–מאי</span>
           <h2><span class="dest">יפן</span> - רכיבה</h2>
           <p>עונת האביב. רכיבה בין האלפים היפניים אל מול הר פוג'י.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop spring" data-target="135" data-months="3,4,5" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2026/08/trip-2615622.jpg')">
+      <section class="stop spring" data-bg="https://botz-adventures.co.il/wp-content/uploads/2026/08/trip-2615622.jpg" data-target="135" data-months="3,4,5">
         <a class="content" href="https://botz-adventures.co.il/myt-country/pt/" target="_blank" rel="noopener">
           <span class="season-tag">אפר–יוני</span>
           <h2><span class="dest">מדיירה</span> - רכיבה והליכה</h2>
           <p>אקלים מתון כמעט כל השנה — אבל זו העונה הכי נעימה לבקר, בין נופים דרמטיים לאוקיינוס.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop spring" data-target="145" data-months="3,4,5" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2026/06/trip-2418819.jpg')">
+      <section class="stop spring" data-bg="https://botz-adventures.co.il/wp-content/uploads/2026/06/trip-2418819.jpg" data-target="145" data-months="3,4,5">
         <a class="content" href="https://botz-adventures.co.il/myt-country/gr/" target="_blank" rel="noopener">
           <span class="season-tag">אפר–יוני</span>
           <h2><span class="dest">יוון (צפון)</span> - רכיבה והליכה</h2>
           <p>לפני חום הקיץ. בין האולימפוס, מנזרי מטאורה ונופי זגוריה.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="195" data-months="4,5,6,7,8" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2026/06/trip-2392069.jpg')">
+      <div class="season-divider summer"><span class="season-divider-dot"></span>קיץ</div>
+
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2026/06/trip-2392069.jpg" data-target="195" data-months="4,5,6,7,8">
         <a class="content" href="https://botz-adventures.co.il/myt-country/it/" target="_blank" rel="noopener">
           <span class="season-tag">מאי–ספט</span>
           <h2><span class="dest">איטליה</span> - רכיבה</h2>
           <p>שיא עונת ההרים. אגם גארדה, הדולומיטים ועמק אאוסטה.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="198" data-months="4,5,6,7,8" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2026/04/trip-1536828.jpg')">
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2026/04/trip-1536828.jpg" data-target="198" data-months="4,5,6,7,8">
         <a class="content" href="https://botz-adventures.co.il/myt-country/at/" target="_blank" rel="noopener">
           <span class="season-tag">מאי–ספט</span>
           <h2><span class="dest">אוסטריה</span> - רכיבה</h2>
           <p>מסלולים בטירול האוסטרי, וגם רכיבה נינוחה לאורך הדנובה.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="205" data-months="5,6,7,8" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2025/11/trip-1551643.jpg')">
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2025/11/trip-1551643.jpg" data-target="205" data-months="5,6,7,8">
         <a class="content" href="https://botz-adventures.co.il/myt-country/ch/" target="_blank" rel="noopener">
           <span class="season-tag">יוני–ספט</span>
           <h2><span class="dest">שווייץ</span> - הליכה</h2>
           <p>הליכה שקטה בין נופים אלפיניים, עם יוגה ומדיטציה לאורך הדרך.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="192" data-months="4,5,6,7,8" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2026/01/trip-1822329.jpg')">
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2026/01/trip-1822329.jpg" data-target="192" data-months="4,5,6,7,8">
         <a class="content" href="https://botz-adventures.co.il/myt-country/si/" target="_blank" rel="noopener">
           <span class="season-tag">מאי–ספט</span>
           <h2><span class="dest">סלובניה</span> - רכיבה</h2>
           <p>הרים מעל 2,000 מטר, יערות, נחלים ואגמי טורקיז.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="200" data-months="4,5,6,7,8" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2026/01/trip-1821644-1024x782.jpg')">
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2026/01/trip-1821644-1024x782.jpg" data-target="200" data-months="4,5,6,7,8">
         <a class="content" href="https://botz-adventures.co.il/myt-country/sk/" target="_blank" rel="noopener">
           <span class="season-tag">מאי–ספט</span>
           <h2><span class="dest">סלובקיה</span> - רכיבה</h2>
           <p>רכיבה בהרי הטטרה הגבוהים, בין כפרים עתיקים לטירות.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="203" data-months="4,5,6,7,8" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2025/12/trip-1683266.jpg')">
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2025/12/trip-1683266.jpg" data-target="203" data-months="4,5,6,7,8">
         <a class="content" href="https://botz-adventures.co.il/myt-country/ge/" target="_blank" rel="noopener">
           <span class="season-tag">מאי–ספט</span>
           <h2><span class="dest">גיאורגיה</span> - רכיבה והליכה</h2>
           <p>שיא העונה במסלולי ההרים. פסגות הקווקז, כפרים עתיקים ונופים דרמטיים.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="210" data-months="5,6,7,8" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2024/11/trip-966081-1024x577.jpg')">
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2024/11/trip-966081-1024x577.jpg" data-target="210" data-months="5,6,7,8">
         <a class="content" href="https://botz-adventures.co.il/myt-country/tz/" target="_blank" rel="noopener">
           <span class="season-tag">יוני–ספט</span>
           <h2><span class="dest">טנזניה</span> - רכיבה וספארי</h2>
           <p>עונה יבשה. רכיבה למרגלות הקילימנג'רו וספארי קלאסי בנגורונגורו.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="207" data-months="4,5,6,7,8,9" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2026/09/trip-2693691.jpg')">
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2026/09/trip-2693691.jpg" data-target="207" data-months="4,5,6,7,8,9">
         <a class="content" href="https://botz-adventures.co.il/myt-country/bg/" target="_blank" rel="noopener">
           <span class="season-tag">מאי–ספט (ושלכת בסתיו)</span>
           <h2><span class="dest">בולגריה</span> - רכיבה והליכה</h2>
           <p>ימים ארוכים ונופי הרים ירוקים במשך הקיץ, ובנוסף טיול ייעודי לימי השלכת בהרי הרילה.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="225" data-months="4,5,6,7,8,9" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2025/10/trip-1512956.jpg')">
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2025/10/trip-1512956.jpg" data-target="225" data-months="4,5,6,7,8,9">
         <a class="content" href="https://botz-adventures.co.il/myt-country/me/" target="_blank" rel="noopener">
           <span class="season-tag">מאי–אוק</span>
           <h2><span class="dest">מונטנגרו</span> - רכיבה והליכה</h2>
           <p>בין ההרים הגבוהים של דורמיטור לחופי הים, בליווי מדריכים מקומיים.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop summer" data-target="228" data-months="4,5,6,7,8,9" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2026/03/trip-2118829.jpg')">
+      <section class="stop summer" data-bg="https://botz-adventures.co.il/wp-content/uploads/2026/03/trip-2118829.jpg" data-target="228" data-months="4,5,6,7,8,9">
         <a class="content" href="https://botz-adventures.co.il/myt-country/al/" target="_blank" rel="noopener">
           <span class="season-tag">מאי–אוק</span>
           <h2><span class="dest">אלבניה</span> - רכיבה</h2>
           <p>סביב אגם אוחריד הצלול, בין רכסי הרים וכפרים מסורתיים.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
-      <section class="stop autumn" data-target="285" data-months="8,9,10" style="background-image:url('https://botz-adventures.co.il/wp-content/uploads/2026/06/trip-2408646.jpg')">
+      <div class="season-divider autumn"><span class="season-divider-dot"></span>סתיו</div>
+
+      <section class="stop autumn" data-bg="https://botz-adventures.co.il/wp-content/uploads/2026/06/trip-2408646.jpg" data-target="285" data-months="8,9,10">
         <a class="content" href="https://botz-adventures.co.il/myt-country/cn/" target="_blank" rel="noopener">
           <span class="season-tag">ספט–נוב</span>
           <h2><span class="dest">סין (יונאן)</span> - הליכה ותרבות</h2>
           <p>מסע בין הרים, אגמים ושבילים היסטוריים על דרך המשי.</p>
+          <span class="cta-hint">לפרטים והרשמה ←</span>
         </a>
       </section>
 
@@ -354,9 +418,17 @@
     path.setAttribute('stroke', '#F6F1E4');
     path.setAttribute('stroke-width','2');
     path.style.transition = 'opacity 0.5s ease';
+    path.style.cursor = 'pointer';
     path.dataset.month = i;
     svg.appendChild(path);
     wedgePaths.push(path);
+
+    path.addEventListener('click', () => {
+      const target = stops.find(s => s.dataset.months.split(',').map(Number).includes(i));
+      if(target){
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
 
     const [tx,ty] = pt(a0+15, (rOuter+rInner)/2);
     const text = document.createElementNS(ns,'text');
@@ -434,6 +506,12 @@
     if(window.innerWidth <= 820){
       return { max: Math.min(window.innerWidth * 0.8, 340), min: 220 };
     }
+    if(window.innerWidth >= 1800){
+      return { max: 760, min: 380 };
+    }
+    if(window.innerWidth >= 1400){
+      return { max: 660, min: 340 };
+    }
     return { max: 560, min: 300 };
   }
   const SHRINK_DISTANCE = 420; // px of scroll over which the shrink happens
@@ -462,6 +540,25 @@
   onScrollOrResize();
   window.addEventListener('scroll', onScrollOrResize, { passive: true });
   window.addEventListener('resize', onScrollOrResize);
+
+  // Lazy-load card background images: only set the actual background-image
+  // once a card is close to entering the viewport, instead of loading all
+  // 18 images upfront on page load.
+  const bgObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const url = el.dataset.bg;
+        if(url){
+          el.style.backgroundImage = `url('${url}')`;
+          el.removeAttribute('data-bg');
+        }
+        bgObserver.unobserve(el);
+      }
+    });
+  }, { rootMargin: '600px 0px 600px 0px' });
+
+  stops.forEach(s => bgObserver.observe(s));
 })();
 </script>
 </body>
