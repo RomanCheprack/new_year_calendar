@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>גלגל ההרפתקאות | בוץ הרפתקאות</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F1E4;
+    --ink:#2B2620;
+    --ink-soft:#5A5348;
+    --line:#D9D0BC;
+    --winter:#3B6B84; --winter-soft:#DCEAEF;
+    --spring:#587A3E; --spring-soft:#E3EBD8;
+    --summer:#C9832B; --summer-soft:#F5E6CD;
+    --autumn:#A34E33; --autumn-soft:#F2DED4;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Heebo',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  header{padding:64px 0 8px;text-align:center;}
+  .eyebrow{font-size:15px;color:var(--ink-soft);margin:0 0 14px;}
+  h1{
+    font-family:'Frank Ruhl Libre',serif;
+    font-weight:700;
+    font-size:clamp(34px,6vw,54px);
+    margin:0 0 18px;
+  }
+  .greeting{max-width:560px;margin:0 auto 8px;font-size:17px;color:var(--ink-soft);}
+
+  .season-key{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;
+    padding:8px 0 32px;font-size:13px;color:var(--ink-soft);
+  }
+  .season-key span{display:inline-flex;align-items:center;gap:8px;}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .dot.w{background:var(--winter);} .dot.sp{background:var(--spring);}
+  .dot.su{background:var(--summer);} .dot.a{background:var(--autumn);}
+
+  .layout{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:40px;
+    align-items:start;
+  }
+  .wheel-col{
+    position:sticky;
+    top:32px;
+    display:flex;
+    justify-content:center;
+  }
+  #wheel{display:block;}
+
+  .story-col{padding-bottom:20vh;}
+  .stop{
+    min-height:62vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    opacity:0.25;
+    transform:translateY(16px);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+  }
+  .stop.in-view{opacity:1;transform:translateY(0);}
+  .stop .season-tag{
+    display:inline-block;
+    align-self:flex-start;
+    font-size:12px;
+    padding:3px 10px;
+    border-radius:2px;
+    margin-bottom:14px;
+  }
+  .stop.winter .season-tag{background:var(--winter-soft);color:var(--winter);}
+  .stop.spring .season-tag{background:var(--spring-soft);color:var(--spring);}
+  .stop.summer .season-tag{background:var(--summer-soft);color:var(--summer);}
+  .stop.autumn .season-tag{background:var(--autumn-soft);color:var(--autumn);}
+  .stop h2{
+    font-family:'Frank Ruhl Libre',serif;
+    font-weight:500;
+    font-size:30px;
+    margin:0 0 12px;
+  }
+  .stop p{font-size:16px;color:var(--ink-soft);max-width:460px;margin:0;}
+
+  footer{
+    text-align:center;
+    padding:56px 0 64px;
+    border-top:1px solid var(--line);
+  }
+  footer p{font-size:14px;color:var(--ink-soft);margin:0 0 18px;}
+  .cta{
+    display:inline-block;
+    font-weight:500;
+    font-size:15px;
+    color:var(--paper);
+    background:var(--ink);
+    padding:12px 30px;
+    border-radius:2px;
+    text-decoration:none;
+  }
+  .cta:hover{opacity:0.85;}
+
+  @media (max-width:820px){
+    .layout{grid-template-columns:1fr;}
+    .wheel-col{
+      position:sticky;
+      top:0;
+      padding:8px 0;
+      background:linear-gradient(var(--paper) 80%, transparent);
+      z-index:2;
+    }
+    .stop{min-height:46vh;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">שנה טובה מבוץ הרפתקאות</p>
+    <h1>גלגל ההרפתקאות</h1>
+    <p class="greeting">לקראת השנה החדשה, ריכזנו עבורכם מתי הזמן הכי טוב לצאת לכל אחד מהיעדים שלנו. גללו למטה — הגלגל יקטין ויתלווה אליכם לאורך הדרך.</p>
+    <div class="season-key">
+      <span><i class="dot w"></i>חורף</span>
+      <span><i class="dot sp"></i>אביב</span>
+      <span><i class="dot su"></i>קיץ</span>
+      <span><i class="dot a"></i>סתיו</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="wheel-col">
+      <svg id="wheel" viewBox="0 0 460 460" role="img" aria-labelledby="wheelTitle wheelDesc">
+        <title id="wheelTitle">גלגל השנה של בוץ הרפתקאות</title>
+        <desc id="wheelDesc">גלגל מעגלי של 12 חודשים; המחוג מצביע על העונה המתאימה ליעד הנקרא כרגע</desc>
+      </svg>
+    </div>
+
+    <div class="story-col">
+
+      <section class="stop winter" data-target="345" data-months="10,11,0">
+        <span class="season-tag">נוב–ינו</span>
+        <h2>קניה, ספארי</h2>
+        <p>עונה יבשה, הזמן הקלאסי לצפייה בחיות בר. ספארי יומי, לודג' יוקרה ומדריך ישראלי לאורך כל הדרך.</p>
+      </section>
+
+      <section class="stop winter" data-target="45" data-months="0,1,2">
+        <span class="season-tag">ינו–מרץ</span>
+        <h2>וייטנאם, eMTB</h2>
+        <p>עונה יבשה, נמנעים מעונת המונסון. רכיבה חשמלית בין כפרים, שדות אורז והרים ירוקים.</p>
+      </section>
+
+      <section class="stop spring" data-target="105" data-months="2,3,4">
+        <span class="season-tag">מרץ–מאי</span>
+        <h2>מרוקו, רכיבה והליכה</h2>
+        <p>לפני שהחום המדברי מגיע — הזמן הכי נעים לצאת לשטח בין ההרים למדבר.</p>
+      </section>
+
+      <section class="stop summer" data-target="150" data-months="4,5,6">
+        <span class="season-tag">מאי–יולי</span>
+        <h2>גיאורגיה, הרים</h2>
+        <p>שיא עונת ההליכה במסלולי ההרים, כפרים מרוחקים ונוף שלא מדמיינים כשחושבים על אירופה.</p>
+      </section>
+
+      <section class="stop summer" data-target="210" data-months="6,7,8">
+        <span class="season-tag">יולי–ספט</span>
+        <h2>בולגריה, רכיבה והליכה</h2>
+        <p>ימים ארוכים, נופי הרים ירוקים ומסלולים לכל רמת רוכב.</p>
+      </section>
+
+      <section class="stop autumn" data-target="270" data-months="8,9,10">
+        <span class="season-tag">ספט–נוב</span>
+        <h2>מדיירה, הליכה ו-eMTB</h2>
+        <p>אקלים מתון כמעט כל השנה — אבל הסתיו הוא הזמן השקט והנעים ביותר לבקר.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>רוצים לתכנן את הטיול הבא שלכם? נשמח לעזור לבחור את היעד והתאריך המושלמים.</p>
+    <a class="cta" href="https://botz-adventures.co.il" target="_blank" rel="noopener">לכל הטיולים של בוץ</a>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const svg = document.getElementById('wheel');
+  const ns = 'http://www.w3.org/2000/svg';
+  const cx = 230, cy = 230, rOuter = 170, rInner = 90;
+  const months = ['ינו','פבר','מרץ','אפר','מאי','יונ','יול','אוג','ספט','אוק','נוב','דצמ'];
+  const seasonSoft  = ['#DCEAEF','#DCEAEF','#E3EBD8','#E3EBD8','#E3EBD8','#F5E6CD','#F5E6CD','#F5E6CD','#F2DED4','#F2DED4','#F2DED4','#DCEAEF'];
+  const seasonColor = ['#3B6B84','#3B6B84','#587A3E','#587A3E','#587A3E','#C9832B','#C9832B','#C9832B','#A34E33','#A34E33','#A34E33','#3B6B84'];
+
+  function pt(angleDeg, r){
+    const a = (angleDeg - 90) * Math.PI/180;
+    return [cx + r*Math.cos(a), cy + r*Math.sin(a)];
+  }
+
+  const wedgePaths = [];
+  for(let i=0;i<12;i++){
+    const a0 = i*30, a1 = (i+1)*30;
+    const [x0o,y0o] = pt(a0, rOuter);
+    const [x1o,y1o] = pt(a1, rOuter);
+    const [x0i,y0i] = pt(a0, rInner);
+    const [x1i,y1i] = pt(a1, rInner);
+    const d = `M${x0i},${y0i} L${x0o},${y0o} A${rOuter},${rOuter} 0 0 1 ${x1o},${y1o} L${x1i},${y1i} A${rInner},${rInner} 0 0 0 ${x0i},${y0i} Z`;
+    const path = document.createElementNS(ns,'path');
+    path.setAttribute('d', d);
+    path.setAttribute('fill', seasonSoft[i]);
+    path.setAttribute('stroke', '#F6F1E4');
+    path.setAttribute('stroke-width','2');
+    path.style.transition = 'opacity 0.5s ease';
+    path.dataset.month = i;
+    svg.appendChild(path);
+    wedgePaths.push(path);
+
+    const [tx,ty] = pt(a0+15, (rOuter+rInner)/2);
+    const text = document.createElementNS(ns,'text');
+    text.setAttribute('x', tx); text.setAttribute('y', ty);
+    text.setAttribute('text-anchor','middle');
+    text.setAttribute('dominant-baseline','central');
+    text.setAttribute('font-family','Heebo, sans-serif');
+    text.setAttribute('font-size','14');
+    text.setAttribute('font-weight','500');
+    text.setAttribute('fill', seasonColor[i]);
+    text.textContent = months[i];
+    svg.appendChild(text);
+  }
+
+  const hub = document.createElementNS(ns,'circle');
+  hub.setAttribute('cx', cx); hub.setAttribute('cy', cy); hub.setAttribute('r', 6);
+  hub.setAttribute('fill', '#2B2620');
+  svg.appendChild(hub);
+
+  const pointer = document.createElementNS(ns,'g');
+  pointer.style.transition = 'transform 0.7s cubic-bezier(0.4,0,0.2,1)';
+  pointer.style.transformOrigin = `${cx}px ${cy}px`;
+  const needle = document.createElementNS(ns,'path');
+  needle.setAttribute('d', `M${cx-5},${cy} L${cx},${cy-rInner+10} L${cx+5},${cy} Z`);
+  needle.setAttribute('fill', '#2B2620');
+  pointer.appendChild(needle);
+  svg.appendChild(pointer);
+
+  function setActive(targetAngle, activeMonths){
+    pointer.style.transform = `rotate(${targetAngle}deg)`;
+    wedgePaths.forEach(p => {
+      const m = parseInt(p.dataset.month, 10);
+      p.style.opacity = activeMonths.includes(m) ? '1' : '0.35';
+    });
+  }
+
+  const stops = Array.from(document.querySelectorAll('.stop'));
+
+  // Deterministic "which destination is active" check: on every scroll frame,
+  // find whichever .stop's vertical midpoint sits closest to the center of
+  // the viewport, and make that one (and only that one) active. This avoids
+  // the ambiguity of "did two sections both cross the trigger zone at once" —
+  // there's always exactly one winner.
+  function getActiveStop(){
+    const centerY = window.innerHeight / 2;
+    let closest = stops[0], closestDist = Infinity;
+    stops.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const mid = rect.top + rect.height / 2;
+      const dist = Math.abs(mid - centerY);
+      if(dist < closestDist){ closestDist = dist; closest = el; }
+    });
+    return closest;
+  }
+
+  let currentActiveStop = null;
+  function updateActiveStop(){
+    const current = getActiveStop();
+    if(current === currentActiveStop) return;
+    currentActiveStop = current;
+    stops.forEach(s => s.classList.toggle('in-view', s === current));
+    setActive(parseFloat(current.dataset.target), current.dataset.months.split(',').map(Number));
+  }
+
+  updateActiveStop();
+
+  // Single wheel physically shrinks as the page scrolls, then settles at its
+  // small sticky size. Width is set directly (not via transform) so it takes
+  // real space and the sidebar column doesn't leave a gap.
+  function sizesForViewport(){
+    if(window.innerWidth <= 820){
+      return { max: Math.min(window.innerWidth * 0.8, 340), min: 220 };
+    }
+    return { max: 560, min: 300 };
+  }
+  const SHRINK_DISTANCE = 420; // px of scroll over which the shrink happens
+
+  function updateWheelSize(){
+    const { max, min } = sizesForViewport();
+    const progress = Math.min(Math.max(window.scrollY / SHRINK_DISTANCE, 0), 1);
+    const eased = progress * progress * (3 - 2 * progress); // smoothstep
+    const width = max - eased * (max - min);
+    svg.style.width = width + 'px';
+    svg.style.height = width + 'px';
+  }
+
+  let ticking = false;
+  function onScrollOrResize(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateWheelSize();
+      updateActiveStop();
+      ticking = false;
+    });
+  }
+
+  updateWheelSize();
+  onScrollOrResize();
+  window.addEventListener('scroll', onScrollOrResize, { passive: true });
+  window.addEventListener('resize', onScrollOrResize);
+})();
+</script>
+</body>
+</html>
